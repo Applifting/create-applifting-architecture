@@ -1,0 +1,47 @@
+{
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "@dbml/cli": "^3.9.5",
+    "@openapitools/openapi-generator-cli": "^2.16.2",
+    "@redocly/cli": "^1.27.2",
+    "npm-watch": "^0.13.0",
+    "open-api-mocker": "^2.0.0",
+    "ajv-cli": "^5.0.0",
+    "ajv-formats": "^3.0.1"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "specs"
+      ],
+      "extensions": [
+        "yaml"
+      ]
+    },
+    "generate": {
+      "patterns": [
+        "dist/api/"
+      ],
+      "extensions": [
+        "yaml"
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "node functions/fitness/openapi/validate-schemas.js",
+    "full-install": "npm install; npm --prefix docs install",
+    "clean": "rm -rf dist",
+    "build": "npm exec -c 'swagger-cli bundle specs/api/openapi.yaml --outfile dist/api/openapi-bundled.yaml --type yaml;mkdir -p docs/apis; cp dist/api/openapi-bundled.yaml docs/apis/openapi.yaml'",
+    "generate": "openapi-generator-cli generate; npm --prefix docs run build",
+    "watch": "npm-watch build & npm-watch generate & npm run mock:openapi:v2 & npm run serve-docs",
+    "mock": "open-api-mocker -s dist/api/openapi-bundled.yaml -p 5555 -w",
+
+
+    "clean:dist": "rm -rf dist",
+    "mock:openapi:v2": "open-api-mocker -s dist/api/openapi-bundled.yaml -p 5555 -w",
+    "generate:with-uml": "openapi-generator-cli generate; npm --prefix docs run build;puml generate dist/uml/schemas.plantuml -o dist/uml.png; rm -rf dist/uml ",
+    "generate:without-uml": "openapi-generator-cli generate; npm --prefix docs run build",
+    "generate:clean": "npm run clean:dist;npm run generate",
+    "serve-docs": "npm --prefix docs run dev"
+  }
+}
