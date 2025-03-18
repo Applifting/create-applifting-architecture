@@ -1,0 +1,35 @@
+type: object
+properties:
+  id:
+    type: integer
+  parent_id:
+    type: integer
+  type: 
+    type: string
+    enum:
+      - tribe
+      - department
+  name:
+    type: string
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
+  direct_child_departments:
+    type: array
+    items:
+      $ref: "./department.yaml"
+  all_child_departments:
+    type: array
+    items:
+      $ref: "./department.yaml"
+  direct_users:
+    type: array
+    items:
+      $ref: "./user_in_department.yaml"
+  all_users:
+    type: array
+    items:
+      $ref: "./user_in_department.yaml"

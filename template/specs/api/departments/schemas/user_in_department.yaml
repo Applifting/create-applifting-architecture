@@ -1,0 +1,20 @@
+type: object
+required:
+  - user_id
+  - department_id
+  - started_at
+properties:
+  user_id:
+    type: integer
+  department_id:
+    type: integer
+  started_at:
+    type: string
+    format: date-time
+  ended_at:
+    type: string
+    format: date-time
+  user:
+    $ref: "../../users/schemas/user.yaml"
+  department:
+    $ref: "./department.yaml"

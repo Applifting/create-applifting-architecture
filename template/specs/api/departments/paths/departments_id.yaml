@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Departments Module
+  summary: Get a department by id
+  description: Returns a department by id
+  operationId: departmentsGet
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/department.yaml"
+            

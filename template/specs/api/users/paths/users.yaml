@@ -1,0 +1,43 @@
+get:
+  tags:
+    - Users Module
+  summary: Get a list of users
+  description: Returns a list of users
+  operationId: usersList
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            x-count: 5
+            items:
+              $ref: "../schemas/user.yaml"
+    "401":
+      description: There was an error with the session token and user was not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: "../../_shared/schemas/client_error.yaml"
+    "403":
+      description: The user is not allowed to access this user
+      content:
+        application/json:
+          schema:
+            $ref: "../../_shared/schemas/client_error.yaml"
+    "404":
+      description: The user was not found
+      content:
+        application/json:
+          schema:
+            $ref: "../../_shared/schemas/client_error.yaml"
+    "500":
+      description: An internal server error occurred
+      content:
+        application/json:
+          schema:
+            $ref: "../../_shared/schemas/server_error.yaml"
+    
+
+

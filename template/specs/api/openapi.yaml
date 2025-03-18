@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Corplifting API
+  version: 2.0.0
+servers:
+  - url: https://corp.applifting.cz/api/v2
+    description: Production
+  - url: https://be.dev.applifting.cz/api/v2
+    description: Development
+security:
+  - sessionAuth: []
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: CORP_PRODUCTION_LOGIN_SESSION
+  schemas:
+    $ref: "./_schemas.yaml"
+tags:
+  - name: Users Module
+    description: Users Module
+  - name: Departments Module
+    description: Departments Module
+paths:
+  /users:
+    $ref: "./users/paths/users.yaml"
+  /users/{userId}:
+    $ref: "./users/paths/users_id.yaml"
+  /departments:
+    $ref: "./departments/paths/departments.yaml"
+  /departments/{id}:
+    $ref: "./departments/paths/departments_id.yaml"

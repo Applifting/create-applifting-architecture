@@ -1,0 +1,10 @@
+user:
+  $ref: "./users/schemas/user.yaml"
+department:
+  $ref: "./departments/schemas/department.yaml"
+client_error:
+  $ref: "./_shared/schemas/client_error.yaml"
+server_error:
+  $ref: "./_shared/schemas/server_error.yaml"
+user_in_department:
+  $ref: "./departments/schemas/user_in_department.yaml"

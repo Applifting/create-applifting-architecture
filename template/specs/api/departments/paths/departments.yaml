@@ -1,0 +1,15 @@
+get:
+  tags:
+    - Departments Module
+  summary: Get a list of departments
+  description: Returns a list of departments
+  operationId: departmentsList
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas/department.yaml"

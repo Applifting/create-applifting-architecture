@@ -1,0 +1,31 @@
+Table "departments"."entity_hierarchy" {
+  "id" bigserial [pk, increment]
+  "parent_id" bigint
+  Note: 'Base table for departments hierarchy, this should be a tree hierarchy of departments and tribes. There should be only parameters relating to the tree structure or strictly shared attributes.'
+}
+
+Table "departments"."department" {
+  "id" bigint [pk]
+  "name" varchar(255) [not null]
+  "entity_hierarchy_id" bigint [not null]
+  Note: 'Departments as part of the shared hierarchy'
+}
+
+Table "departments"."tribe" {
+  "id" bigint [pk]
+  "name" varchar(255) [not null]
+  "entity_hierarchy_id" bigint [not null]
+  Note: 'Tribes as part of the shared hierarchy'
+}
+
+Table "departments"."department_membership" {
+  "id" BIGSERIAL [pk, increment]
+  "applifter_id" BIGSERIAL [not null, increment]
+  "department_id" bigint [not null]
+}
+
+Table "departments"."tribe_membership" {
+  "id" BIGSERIAL [pk, increment]
+  "applifter_id" bigint [not null]
+  "tribe_id" bigint [not null]
+}

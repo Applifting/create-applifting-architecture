@@ -1,0 +1,33 @@
+Enum "users"."sex_enum" {
+  "MALE"
+  "FEMALE"
+  "OTHER"
+}
+Enum "users"."address_type_enum" {
+  "HOME"
+  "BUSINESS"
+  "DELIVERY"
+}
+
+Table "users"."applifter" {
+  "id" bigserial [pk, increment]
+  "first_name" varchar(255) [not null]
+  "middle_name" varchar(255) [not null]
+  "last_name" varchar(255) [not null]
+  "nickname" varchar [unique, not null, note: 'Unique nickname of 3 characters like TOG, that we use to identify user']
+  "sex" users.sex_enum [not null]
+  "birthdate" date
+  "citizenship" varchar [default: `'CZ'::charactervarying`]
+  "nationality" varchar [default: `'CZ'::charactervarying`]
+}
+
+Table "users"."address" {
+  "id" bigserial [pk, increment]
+  "user_id" bigint
+  "address_type" users.address_type_enum [not null]
+  "street1" varchar
+  "street2" varchar
+  "town" varchar
+  "country_code" varchar
+  "post_code" varchar
+}

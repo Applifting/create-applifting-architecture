@@ -1,0 +1,38 @@
+type: object
+description: A user of the system
+required:
+  - id
+  - name
+  - fullName
+  - firstName
+  - lastName
+  - slackAvatar
+properties:
+  id:
+    type: integer
+    description: The id of the user
+    x-faker: "random.number"
+  name:
+    type: string
+    description: The name of the user
+    x-faker: "person.fullName"
+  nickname:
+    type: string
+    description: Nickname of the user
+    nullable: true
+  fullName:
+    type: string
+    description: Full name of the user
+    x-faker: "person.fullName"
+  firstName:
+    type: string
+    description: The first name of the user
+    x-faker: "person.firstName"
+  lastName:
+    type: string
+    description: The last name of the user
+    x-faker: "person.lastName"
+  email:
+    type: string
+    description: The email of the user
+    x-faker: "internet.email"

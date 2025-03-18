@@ -1,0 +1,70 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.11.0",
+    "generators": {
+      "kotlin": {
+        "generatorName": "kotlin-spring",
+        "output": "dist/kotlin",
+        "inputSpec": "dist/api/openapi-bundled.yaml",
+        "additionalProperties": {
+          "interfaceOnly": true,
+          "reactive": false,
+          "serviceInterface": false,
+          "artifactId": "corplifting-api",
+          "artifactVersion": "0.6.8",
+          "basePackage": "io.applifting.corp.generated",
+          "apiPackage": "io.applifting.corp.generated.api",
+          "configPackage": "io.applifting.corp.generated.config",
+          "modelPackage": "io.applifting.corp.generated.model",
+          "packageName": "io.applifting.corp.generated",
+          "groupId": "io.applifting"
+        }
+      },
+      "typescript": {
+        "generatorName": "typescript-fetch",
+        "output": "dist/ts",
+        "inputSpec": "dist/api/openapi-bundled.yaml",
+        "additionalProperties": {
+          "npmName": "@applifting/corplifting-api",
+          "npmVersion": "0.6.8",
+          "validationAttributes": true
+        }
+      },
+      "csharp": {
+        "generatorName": "csharp",
+        "output": "dist/csharp",
+        "inputSpec": "dist/api/openapi-bundled.yaml",
+        "additionalProperties": {
+          "packageName": "Corplifting.Api",
+          "packageVersion": "0.6.8",
+          "packageGuid": "e7265377-518d-408a-9190-ea1979b7d211",
+          "library": "generichost",
+          "netCoreProjectFile": true,
+          "targetFramework": "netstandard2.1"
+        }
+      },
+      "python": {
+        "generatorName": "python",
+        "output": "dist/python",
+        "inputSpec": "dist/api/openapi-bundled.yaml",
+        "additionalProperties": {
+          "packageName": "corplifting_api",
+          "packageVersion": "0.6.8",
+          "projectName": "corplifting-api"
+        }
+      },
+      "uml": {
+        "generatorName": "plantuml",
+        "output": "dist/uml",
+        "inputSpec": "dist/api/openapi-bundled.yaml"
+      },
+      "postgresql-schema": {
+        "generatorName": "postgresql-schema",
+        "output": "dist/postgresql",
+        "inputSpec": "dist/api/openapi-bundled.yaml"
+      }
+    }
+  }
+}

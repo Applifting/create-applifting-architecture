@@ -1,0 +1,45 @@
+get:
+  tags:
+    - Users Module
+  summary: Get a user by id
+  description: Returns a user by id
+  operationId: usersGet
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/user.yaml"
+post:
+  tags:
+    - Users Module
+  summary: Update a user by id
+  description: Updates a user by id
+  operationId: usersUpdate
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    description: The user to update
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/user.yaml"
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/user.yaml"
